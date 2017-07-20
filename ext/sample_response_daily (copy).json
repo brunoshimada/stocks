@@ -1,0 +1,25 @@
+{
+    "Meta Data": {
+        "1. Information": "Daily Prices (open, high, low, close) and Volumes",
+        "2. Symbol": "PETR4.SA",
+        "3. Last Refreshed": "2017-07-17",
+        "4. Output Size": "Compact",
+        "5. Time Zone": "US/Eastern"
+    },
+    "Time Series (Daily)": {
+        "2017-07-17": {
+            "1. open": "13.0300",
+            "2. high": "13.0500",
+            "3. low": "12.8700",
+            "4. close": "12.8900",
+            "5. volume": "27951200"
+        },
+        "2017-07-14": {
+            "1. open": "12.9600",
+            "2. high": "13.0600",
+            "3. low": "12.9100",
+            "4. close": "13.0500",
+            "5. volume": "35977500"
+        }
+    }
+}
