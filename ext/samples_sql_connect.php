@@ -1,5 +1,9 @@
 <?php
-$mysql_conn = mysqli_connect('localhost','root','sinergisshimada','stocks');
+/*
+	stocks = production
+	stocks_staging = dev
+*/
+$mysql_conn = mysqli_connect('localhost','root','sinergisshimada','stocks_staging');
 if (!$mysql_conn) {
 	print_r("error ".mysqli_connect_error()).PHP_EOL;
 } else {
