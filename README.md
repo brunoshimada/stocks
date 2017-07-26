@@ -1,5 +1,15 @@
 # README/CHANGELOG
 
+## [v.0.1.1] / 2017-07-25
+
+### Added
+* Adicionado *sample_queries*
+    * Conjunto de queries para rodar contra o banco
+
+### Changed
+* *stocks.php*
+    * function **decodeAllIndexes** tem o template da query fora do for, dentro do for são processados somente os VALUES para adicionar no banco  
+
 ## [v.0.1.0] / 2017-07-21
 
 ### Added

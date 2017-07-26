@@ -25,6 +25,7 @@ class stocks
         $symbol = $jsonDecoded->{'Meta Data'}->{'2. Symbol'};
         $query = '';
         $jsonDecoded = $jsonDecoded->{'Time Series (Daily)'};
+        $query = "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ";
         foreach ($jsonDecoded as $key => $value) {
             $queryDate = $key;
             $querySymbol = $symbol;
@@ -33,8 +34,11 @@ class stocks
             $queryLow  = $jsonDecoded->{$key}->{'3. low'};
             $queryClose = $jsonDecoded->{$key}->{'4. close'};
             $queryVolume = $jsonDecoded->{$key}->{'5. volume'};
-            $query .= "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ($queryDate,$querySymbol,$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume);\n";
+            $query .= "('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume),";
         }
+        $query = substr($query, 0, -1);
+        $query .= ";";
+        // print($query);
         return $query;
     }
 
@@ -54,10 +58,11 @@ class stocks
                 $queryLow  = $jsonDecoded->{$key}->{'3. low'};
                 $queryClose = $jsonDecoded->{$key}->{'4. close'};
                 $queryVolume = $jsonDecoded->{$key}->{'5. volume'};
-                $query .= "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ($queryDate,$querySymbol,$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume);\n";
+                $query .= "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume);\n";
             }
             $count++;
         }
-        print($query);
+        // print($query);
+        return $query;
     }
 }
