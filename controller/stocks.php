@@ -1,13 +1,13 @@
 <?php
 class stocks
 {
-    public function getIndexes($symbol)
+    public function getIndexes($symbol,$outputsize)
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=$symbol&apikey=QD4ZEAN2ZFKEG38R"
+            CURLOPT_URL => "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=$symbol&outputsize=$outputsize&apikey=QD4ZEAN2ZFKEG38R"
             ));
         $response = curl_exec($curl);
         $err = curl_error($curl);

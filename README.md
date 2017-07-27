@@ -1,5 +1,24 @@
 # README/CHANGELOG
 
+## UNRELEASED ~~[v.0.2.1] / 2017-07-27~~
+
+~~### Changed
+* Finalizado *scheduler.php*
+    * Pendências:
+        * step 4.2.2
+        * logging~~
+
+## [v.0.2.0] / 2017-07-27
+
+### Added
+* Adicionado folder *scheduler*
+* Adicionado arquivo *scheduler.php*
+* Adicionado sample de futuro logging em *stocksTest.php*
+
+### Changed
+* *stocks.sql*
+    * Mudança na estrutura do banco, adicionado coluna que indica se é a primeria vez que a ação procurada vai ser atualizada 
+
 ## [v.0.1.1] / 2017-07-25
 
 ### Added
