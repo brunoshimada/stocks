@@ -4,7 +4,7 @@ CREATE DATABASE stocks;
 CREATE TABLE IF NOT EXISTS symbols (id integer NOT NULL auto_INCREMENT PRIMARY KEY, symbol varchar(20) NOT NULL UNIQUE, name varchar(100), first_time boolean NOT NULL DEFAULT TRUE) ENGINE = INNODB;
 
 
-CREATE TABLE IF NOT EXISTS daily_prices (id integer NOT NULL auto_INCREMENT PRIMARY KEY, date date NOT NULL, symbol varchar(20) NOT NULL, OPEN decimal(12,4) NOT NULL, high decimal(12,4) NOT NULL, low decimal(12,4) NOT NULL, CLOSE decimal(12,4) NOT NULL, volume integer NOT NULL, CONSTRAINT fk_daily_prices
+CREATE TABLE IF NOT EXISTS daily_prices (id integer NOT NULL auto_INCREMENT PRIMARY KEY, date date NOT NULL, symbol varchar(20) NOT NULL, open decimal(12,4) NOT NULL, high decimal(12,4) NOT NULL, low decimal(12,4) NOT NULL, close decimal(12,4) NOT NULL, close_adjusted decimal(12,4) NOT NULL,volume integer NOT NULL, CONSTRAINT fk_daily_prices
                                          FOREIGN KEY (symbol) REFERENCES symbols(symbol), UNIQUE (date,symbol)) ENGINE = INNODB;
 
  --sample queries

@@ -7,7 +7,7 @@ class stocks
         curl_setopt_array($curl, array(
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=$symbol&outputsize=$outputsize&apikey=QD4ZEAN2ZFKEG38R"
+            CURLOPT_URL => "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=$symbol&outputsize=$outputsize&apikey=QD4ZEAN2ZFKEG38R"
             ));
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -25,7 +25,7 @@ class stocks
         $symbol = $jsonDecoded->{'Meta Data'}->{'2. Symbol'};
         $query = '';
         $jsonDecoded = $jsonDecoded->{'Time Series (Daily)'};
-        $query = "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ";
+        $query = "INSERT INTO daily_prices (date,symbol,open,high,low,close,close_adjusted,volume) VALUES ";
         foreach ($jsonDecoded as $key => $value) {
             $queryDate = $key;
             $querySymbol = $symbol;
@@ -33,8 +33,12 @@ class stocks
             $queryHigh = $jsonDecoded->{$key}->{'2. high'};
             $queryLow  = $jsonDecoded->{$key}->{'3. low'};
             $queryClose = $jsonDecoded->{$key}->{'4. close'};
-            $queryVolume = $jsonDecoded->{$key}->{'5. volume'};
-            $query .= "('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume),";
+            $queryAdjustedClose = $jsonDecoded->{$key}->{'5. adjusted close'};
+            $queryVolume = $jsonDecoded->{$key}->{'6. volume'};
+            // se for usar as de baixo necessários alter table
+            // $queryDividendAmount = $jsonDecoded->{$key}->{'7. dividend amount'};
+            // $querySplitCoefficient = $jsonDecoded->{$key}->{'8. split coefficient'};
+            $query .= "('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryAdjustedClose,$queryVolume),";
         }
         $query = substr($query, 0, -1);
         $query .= ";";
@@ -57,8 +61,12 @@ class stocks
                 $queryHigh = $jsonDecoded->{$key}->{'2. high'};
                 $queryLow  = $jsonDecoded->{$key}->{'3. low'};
                 $queryClose = $jsonDecoded->{$key}->{'4. close'};
-                $queryVolume = $jsonDecoded->{$key}->{'5. volume'};
-                $query .= "INSERT INTO daily_prices (date,symbol,open,high,low,close,volume) VALUES ('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryVolume);\n";
+                $queryAdjustedClose = $jsonDecoded->{$key}->{'5. adjusted close'};
+                $queryVolume = $jsonDecoded->{$key}->{'6. volume'};
+            // se for usar as de baixo necessários alter table
+            // $queryDividendAmount = $jsonDecoded->{$key}->{'7. dividend amount'};
+            // $querySplitCoefficient = $jsonDecoded->{$key}->{'8. split coefficient'};
+                $query .= "INSERT INTO daily_prices (date,symbol,open,high,low,close,close_adjusted,volume) VALUES ('$queryDate','$querySymbol',$queryOpen,$queryHigh,$queryLow,$queryClose,$queryAdjustedClose,$queryVolume);\n";
             }
             $count++;
         }

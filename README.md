@@ -2,11 +2,15 @@
 
 ## UNRELEASED ~~[v.0.2.1] / 2017-07-27~~
 
-~~### Changed
-* Finalizado *scheduler.php*
-    * Pendências:
-        * step 4.2.2
-        * logging~~
+~~### Changed~~
+~~* [Pending] Finalizado *scheduler.php*~~ 
+    ~~* Pendências:~~
+        ~~* step 4.2.2~~
+        ~~* logging~~
+~~* [Done] *stocks.sql*~~
+    ~~* Mudança na estrutura do banco, adicionado coluna **close_adjusted** em **daily_prices**~~
+~~* [Done] *stocks.php*~~
+    ~~* functions de decode* alteradas para receber os novos valores de **close_adjusted**~~
 
 ## [v.0.2.0] / 2017-07-27
 
@@ -17,7 +21,7 @@
 
 ### Changed
 * *stocks.sql*
-    * Mudança na estrutura do banco, adicionado coluna que indica se é a primeria vez que a ação procurada vai ser atualizada 
+    * Mudança na estrutura do banco, adicionado coluna que indica se é a primeira vez que a ação procurada vai ser atualizada 
 
 ## [v.0.1.1] / 2017-07-25
 
