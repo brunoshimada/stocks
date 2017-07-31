@@ -1,16 +1,16 @@
 # README/CHANGELOG
 
-## UNRELEASED ~~[v.0.2.1] / 2017-07-27~~
+## [v.0.2.1] / 2017-07-27
 
-~~### Changed~~
-~~* [Pending] Finalizado *scheduler.php*~~ 
-    ~~* Pendências:~~
-        ~~* step 4.2.2~~
-        ~~* logging~~
-~~* [Done] *stocks.sql*~~
-    ~~* Mudança na estrutura do banco, adicionado coluna **close_adjusted** em **daily_prices**~~
-~~* [Done] *stocks.php*~~
-    ~~* functions de decode* alteradas para receber os novos valores de **close_adjusted**~~
+### Changed
+* Finalizado *scheduler.php* 
+    * Pendências:
+        * step 4.2.2
+        * logging
+* *stocks.sql*
+    * Mudança na estrutura do banco, adicionado coluna **close_adjusted** em **daily_prices**
+* *stocks.php*
+    * functions de decode* alteradas para receber os novos valores de **close_adjusted**
 
 ## [v.0.2.0] / 2017-07-27
 
